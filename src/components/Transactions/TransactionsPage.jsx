@@ -171,14 +171,20 @@ export default function TransactionsPage() {
           </select>
 
           <input
-            type="date"
+            type={state.filters.dateFrom ? "date" : "text"}
+            placeholder="Start Date"
+            onFocus={e => e.target.type = "date"}
+            onBlur={e => { if (!e.target.value) e.target.type = "text"; }}
             value={state.filters.dateFrom}
             onChange={e => handleFilter('dateFrom', e.target.value)}
             className="flex-1 min-w-[120px] py-[9px] px-3 rounded-lg border border-border bg-surface-2 text-text-primary text-[0.83rem] font-sans cursor-pointer transition-all duration-200 focus:outline-none focus:border-accent focus:ring-[3px] focus:ring-accent-bg"
             id="filter-date-from"
           />
           <input
-            type="date"
+            type={state.filters.dateTo ? "date" : "text"}
+            placeholder="End Date"
+            onFocus={e => e.target.type = "date"}
+            onBlur={e => { if (!e.target.value) e.target.type = "text"; }}
             value={state.filters.dateTo}
             onChange={e => handleFilter('dateTo', e.target.value)}
             className="flex-1 min-w-[120px] py-[9px] px-3 rounded-lg border border-border bg-surface-2 text-text-primary text-[0.83rem] font-sans cursor-pointer transition-all duration-200 focus:outline-none focus:border-accent focus:ring-[3px] focus:ring-accent-bg"
