@@ -83,6 +83,10 @@ body {
   background: var(--text-muted);
 }
 
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* ===== Selection ===== */
 ::selection {
   background: var(--accent);

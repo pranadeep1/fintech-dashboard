@@ -239,7 +239,7 @@ export default function TransactionsPage() {
         </div>
       ) : (
         <>
-          <div className="overflow-auto w-full max-w-full max-h-[calc(100vh-320px)] min-h-[300px] rounded-[14px] border border-border bg-surface-1 shadow-sm">
+          <div className="overflow-auto sleek-scroll w-full max-w-full max-h-[calc(100vh-320px)] rounded-[14px] border border-border bg-surface-1 shadow-sm">
             <table className="w-full border-collapse text-[0.85rem] relative">
               <thead className="sticky top-0 z-10 shadow-sm outline outline-1 outline-border">
                 <tr>
