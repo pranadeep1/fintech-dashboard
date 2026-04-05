@@ -8,10 +8,10 @@ import {
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload) return null;
   return (
-    <div className="chart-tooltip">
-      <p className="tooltip-label">{label}</p>
+    <div className="bg-surface-1 border border-border rounded-[10px] py-2.5 px-3.5 shadow-md">
+      <p className="text-[0.75rem] font-semibold text-text-primary m-0 mb-1">{label}</p>
       {payload.map((entry, i) => (
-        <p key={i} className="tooltip-value" style={{ color: entry.color }}>
+        <p key={i} className="text-[0.8rem] font-semibold my-[2px]" style={{ color: entry.color }}>
           {entry.name}: {formatINRFull(entry.value)}
         </p>
       ))}
@@ -25,20 +25,20 @@ export default function BalanceTrend() {
 
   if (monthlyData.length === 0) {
     return (
-      <div className="chart-card">
-        <h3 className="chart-title">Balance Trend</h3>
-        <div className="empty-chart">No data available</div>
+      <div className="bg-surface-1 border border-border rounded-[14px] p-[22px]">
+        <h3 className="text-[0.95rem] font-bold text-text-primary m-0">Balance Trend</h3>
+        <div className="flex items-center justify-center min-h-[200px] text-text-muted text-[0.85rem]">No data available</div>
       </div>
     );
   }
 
   return (
-    <div className="chart-card animate-fade-in">
-      <div className="chart-header">
-        <h3 className="chart-title">Balance Trend</h3>
-        <span className="chart-subtitle">Last 6 months</span>
+    <div className="bg-surface-1 border border-border rounded-[14px] p-[22px] transition-shadow duration-300 hover:shadow-sm animate-fade-in min-w-0">
+      <div className="flex items-center justify-between mb-[18px]">
+        <h3 className="text-[0.95rem] font-bold text-text-primary m-0">Balance Trend</h3>
+        <span className="text-[0.75rem] text-text-muted font-medium">Last 6 months</span>
       </div>
-      <div className="chart-container">
+      <div className="w-full min-w-0 overflow-hidden">
         <ResponsiveContainer width="100%" height={300}>
           <AreaChart data={monthlyData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>

@@ -7,7 +7,6 @@ import Header from './components/Layout/Header';
 import DashboardPage from './components/Dashboard/DashboardPage';
 import TransactionsPage from './components/Transactions/TransactionsPage';
 import InsightsPage from './components/Insights/InsightsPage';
-import './App.css';
 
 function AppContent() {
   const { state } = useApp();
@@ -58,7 +57,7 @@ function AppContent() {
   };
 
   return (
-    <div className="app-layout">
+    <div className="flex h-[100dvh] w-full overflow-hidden bg-bg text-text-primary font-sans transition-colors duration-300">
       <Sidebar
         collapsed={sidebarCollapsed}
         mobileOpen={mobileMenuOpen}
@@ -67,14 +66,14 @@ function AppContent() {
       />
       {mobileMenuOpen && (
         <div
-          className="mobile-overlay active"
+          className="fixed inset-0 bg-black/50 z-[90] backdrop-blur-[2px] pointer-events-auto transition-colors duration-300"
           onClick={() => setMobileMenuOpen(false)}
           aria-hidden="true"
         />
       )}
-      <main className={`main-content ${sidebarCollapsed ? 'expanded' : ''}`}>
+      <main className={`flex-1 min-w-0 h-[100dvh] overflow-y-auto overflow-x-hidden flex flex-col transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarCollapsed ? 'md:ml-[68px]' : 'md:ml-[250px]'}`}>
         <Header onMobileMenuToggle={() => setMobileMenuOpen(o => !o)} />
-        <div className={`page-content ${pageTransition ? 'page-exit' : 'page-enter'}`}>
+        <div className={`flex-1 min-w-0 w-full overflow-x-hidden max-w-[1400px] mx-auto p-4 max-sm:p-3 md:py-6 md:px-7 transition-all duration-150 ease-out ${pageTransition ? 'opacity-0 translate-y-[6px]' : 'opacity-100 translate-y-0'}`}>
           <ErrorBoundary>
             {renderPage()}
           </ErrorBoundary>
